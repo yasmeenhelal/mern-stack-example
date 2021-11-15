@@ -14,9 +14,10 @@ module.exports = {
       // Verify we got a good "db" object
       if (db)
       {
-        _db = db.db("myFirstDatabase");
+        _db = db.db("AirlineReservation");
         console.log("Successfully connected to MongoDB."); 
       }
+      
       return callback(err);
          });
   },
