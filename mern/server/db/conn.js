@@ -1,5 +1,7 @@
 
 const { MongoClient } = require("mongodb");
+const flightSchema = require('./schema/flights');
+const userSchema = require('./schema/users');
 const Db = process.env.ATLAS_URI;
 const client = new MongoClient(Db, {
   useNewUrlParser: true,
