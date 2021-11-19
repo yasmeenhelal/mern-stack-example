@@ -1,6 +1,5 @@
 const mongoose= require('mongoose');
 
-
 const flightSchema= new mongoose.Schema({
 From: {
     type:String,
@@ -9,7 +8,7 @@ From: {
 
 To: {
     type:String,
-    required=true
+    required:true
 },
 FlightDate: {
     type: Date,
@@ -51,5 +50,5 @@ Airport: {
     required:false
 }
 })
-const flight=new mongoose.model("FLIGHT",flightSchema);
+const flight=new mongoose.model("Flights",flightSchema);
 module.exports= flight;

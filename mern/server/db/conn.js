@@ -1,7 +1,7 @@
+// import flightSchema from "./schema/flights";
+// import userSchema from "./schema/users";
 
 const { MongoClient } = require("mongodb");
-const flightSchema = require('./schema/flights');
-const userSchema = require('./schema/users');
 const Db = process.env.ATLAS_URI;
 const client = new MongoClient(Db, {
   useNewUrlParser: true,
@@ -9,6 +9,9 @@ const client = new MongoClient(Db, {
 });
 
 var _db;
+
+const flightSchema = require('./schema/flights');
+const userSchema = require('./schema/users');
 
 module.exports = {
   connectToServer: function (callback) {
