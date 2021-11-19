@@ -1,4 +1,9 @@
 const mongoose= require('mongoose');
+mongoose.connect('mongodb+srv://Administrator:12345@cluster0.o88du.mongodb.net/AirlineReservation?retryWrites=true&w=majority');
+var db=mongoose.connection;
+db.on('erro',console.error.bind(console,'connection error:'));
+db.once('open',function(){
+    console.log("success")
 
 const flightSchema= new mongoose.Schema({
 From: {
@@ -21,7 +26,7 @@ Cabin: {
 },
 
 SeatsAvailable: {
-    type: Integer,
+    type: String,
     required:true
 },
 
@@ -31,17 +36,17 @@ FlightNumber: {
 },
 
 ArrivalTime: {
-    type: Time,
+    type: String,
     required:false
 },
 
 EconomySeats: {
-    type: Integer,
+    type: String,
     required:false
 },
 
 BusinessSeats: {
-    type: Integer,
+    type: String,
     required:false
 },
 
@@ -50,5 +55,27 @@ Airport: {
     required:false
 }
 })
-const flight=new mongoose.model("Flights",flightSchema);
-module.exports= flight;
+const flight=new mongoose.model("seifoo",flightSchema);
+var flightss = [{
+    From:"LAX",
+    To:"LUV",
+    FlightDate:"12-1-2022",
+    Cabin:"Business",
+    SeatsAvailable:"23"
+    },{From:"LAX",
+    To:"LUV",
+    FlightDate:'12-1-2022',
+    Cabin:"Business",
+    SeatsAvailable:"23"}];
+    
+    flight.collection.insert(flightss,function(err,docs){
+        if(err){
+            return console.error(err);
+        }
+        else{
+          console.log("Multiple documents inserted")
+        }
+    })
+    
+    })
+    

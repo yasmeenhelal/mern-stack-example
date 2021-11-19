@@ -11,13 +11,16 @@ const dbo = require("../db/conn");
 // This help convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
 
-// var Users = require("'./schema/users'");
-// db.getCollection('Users')
-// var user1 = new Users({ Username: 'Administrator', Password: '123' });
-//         user1.save(function (err) {
-//         if (err) return handleError(err);
-//         });
+//ADD RECORDS
 
+var User = require('../schema/users.js');
+// db.collection('Users').insertOne({ Username:"Administrator", Password:"12345"});
+const user1 = new User({ Username:"Administrator", Password:"12345"});
+console.log(user1);
+user1.save(function (err) {
+  if (err) return console.error(err);
+  // console.log(user1.Username + " saved to bookstore collection.");
+});
 
 
 // This section will help you get a list of all the records.

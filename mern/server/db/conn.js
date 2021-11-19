@@ -10,8 +10,8 @@ const client = new MongoClient(Db, {
 
 var _db;
 
-const flightSchema = require('./schema/flights');
-const userSchema = require('./schema/users');
+// const flightSchema = require('./schema/flights');
+// const userSchema = require('./schema/users');
 
 module.exports = {
   connectToServer: function (callback) {
