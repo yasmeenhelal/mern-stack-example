@@ -4,6 +4,7 @@ var db=mongoose.connection;
 db.on('erro',console.error.bind(console,'connection error:'));
 db.once('open',function(){
     console.log("success")
+
 const userSchema= new mongoose.Schema({
 Username: {
     type:String,
@@ -15,15 +16,15 @@ Password: {
     required:true
 }
 })
-const yaso = new mongoose.model("yaso",userSchema);
 
-var userse = [{
-Username:"a",
-Password:"123"
-},{Username:"a",
-Password:"123"}];
+const usercons = new mongoose.model("Users",userSchema);
 
-yaso.collection.insert(userse,function(err,docs){
+var u1 = [{
+Username:"Adminitrator",
+Password:"cfk89hJH221"
+}];
+
+usercons.collection.insert(u1,function(err,docs){
     if(err){
         return console.error(err);
     }

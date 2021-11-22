@@ -13,14 +13,14 @@ const ObjectId = require("mongodb").ObjectId;
 
 //ADD RECORDS
 
-var User = require('../schema/users.js');
+// var User = require('../schema/users.js');
 // db.collection('Users').insertOne({ Username:"Administrator", Password:"12345"});
-const user1 = new User({ Username:"Administrator", Password:"12345"});
-console.log(user1);
-user1.save(function (err) {
-  if (err) return console.error(err);
+// const user1 = new User({ Username:"Administrator", Password:"12345"});
+// console.log(user1);
+// user1.save(function (err) {
+//   if (err) return console.error(err);
   // console.log(user1.Username + " saved to bookstore collection.");
-});
+// });
 
 
 // This section will help you get a list of all the records.
