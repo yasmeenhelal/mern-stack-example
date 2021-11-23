@@ -5,7 +5,7 @@ mongoose.connect('mongodb+srv://Administrator:12345@cluster0.o88du.mongodb.net/A
 var db=mongoose.connection;
 db.on('erro',console.error.bind(console,'connection error:'));
 db.once('open',function(){
-    console.log("success")
+    console.log("users success")
 
 const userSchema= new mongoose.Schema({
 Username: {

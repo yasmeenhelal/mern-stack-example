@@ -113,7 +113,7 @@ export default class Create extends Component {
     };
 
     axios
-      .post("http://localhost:3000/record", newFlight)
+      .post("http://localhost:3000/record/createflight", newFlight)
       .then((res) => console.log(res.data));
 
     // We will empty the state after posting the data to the database

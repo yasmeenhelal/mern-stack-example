@@ -7,7 +7,7 @@ const router = express();
 
 
 //Test
-router.post('/createflight', (req, res)=>{
+router.post('http://localhost:3000/record/createflight', (req, res)=>{
   let flight1 ={
       From:"LAX",
       To:"JFK",
@@ -20,6 +20,8 @@ router.post('/createflight', (req, res)=>{
       res.send(userdata)
   })
 })
+
+console.log("FLIGHT ADDED");
 
 router.get('/test', (req, res)=>{
   res.send("test")

@@ -6,12 +6,6 @@ const port = 8000;
 app.use(cors());
 app.use(express.json());
 
-//TEST
-const flightRoutes = require("./routes/record");
-const userRoutes = require("./routes/guest");
-app.use('/record', flightRoutes);
-app.use('/guest', userRoutes);
-
 // app.use(require("./routes/record"));
 // app.use(require("./routes/guest"));
 
@@ -27,3 +21,9 @@ app.listen(port, () => {
   });
   console.log(`Server is running on port: ${port}`);
 });
+
+//TEST
+const flightRoutes = require("./routes/record");
+const userRoutes = require("./routes/guest");
+app.use('/record', flightRoutes);
+app.use('/guest', userRoutes);

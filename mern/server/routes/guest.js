@@ -5,7 +5,7 @@ const ObjectId = require("mongodb").ObjectId;
 var user = require("../schema/users");
 const router = express();
 
-router.post('/createuser', (req, res)=>{
+router.post('http://localhost:3000/guest/createuser', (req, res)=>{
     let users ={
         username: 'Admin2',
         Password: 'Pass2'
@@ -15,6 +15,8 @@ router.post('/createuser', (req, res)=>{
         res.send(userdata)
     })
 })
+
+console.log("ADMIN ADDED");
 
 router.get('/test', (req, res)=>{
     res.send("test")
