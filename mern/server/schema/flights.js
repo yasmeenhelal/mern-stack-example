@@ -1,5 +1,6 @@
 const mongoose= require('mongoose');
 mongoose.connect('mongodb+srv://Administrator:12345@cluster0.o88du.mongodb.net/AirlineReservation?retryWrites=true&w=majority');
+
 var db=mongoose.connection;
 db.on('erro',console.error.bind(console,'connection error:'));
 db.once('open',function(){
@@ -53,6 +54,8 @@ AirportTerminal: {
 
 
 const flight=new mongoose.model("flights",flightSchema);
+module.exports = flight;
+
 
 // var f1 = [
 //     {From:"LAX",
@@ -322,9 +325,6 @@ const flight=new mongoose.model("flights",flightSchema);
 //     axios
 //       .post("http://localhost:3000/record", f1)
 //       .then((res) => console.log(res.data));
-
-        module.exports = flight;
-
 
     })
     

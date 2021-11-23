@@ -5,7 +5,16 @@ require("dotenv").config({ path: "./config.env" });
 const port = 8000;
 app.use(cors());
 app.use(express.json());
-app.use(require("./routes/record"));
+
+//TEST
+const flightRoutes = require("./routes/record");
+const userRoutes = require("./routes/guest");
+app.use('/record', flightRoutes);
+app.use('/guest', userRoutes);
+
+// app.use(require("./routes/record"));
+// app.use(require("./routes/guest"));
+
 // get driver connection
 const dbo = require("./db/conn");
 const dbu= require("./schema/users");

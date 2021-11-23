@@ -10,7 +10,6 @@ var _db;
 module.exports = {
   connectToServer: function (callback) {
     client.connect(function (err, db) {
-      // Verify we got a good "db" object
       if (db)
       {
         _db = db.db("AirlineReservation");
@@ -25,3 +24,6 @@ module.exports = {
     return _db;
   },
 };
+
+// const mongoose = require('mongoose');
+// mongoose.connect('mongodb://localhost/AirlineReservation', {useNewUrlParser: true});

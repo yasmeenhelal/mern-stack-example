@@ -1,5 +1,7 @@
 const mongoose= require('mongoose');
 mongoose.connect('mongodb+srv://Administrator:12345@cluster0.o88du.mongodb.net/AirlineReservation?retryWrites=true&w=majority');
+// mongoose.connect('mongodb://localhost/AirlineReservation', {useNewUrlParser: true});
+
 var db=mongoose.connection;
 db.on('erro',console.error.bind(console,'connection error:'));
 db.once('open',function(){
@@ -18,6 +20,7 @@ Password: {
 })
 
 const usercons = new mongoose.model("users",userSchema);
+module.exports = usercons;
 
 // var u1 = [{
 // Username:"Adminitrator",
@@ -32,9 +35,5 @@ const usercons = new mongoose.model("users",userSchema);
 //       console.log("User inserted")
 //     }
 // })
-
-module.exports = usercons;
-;
-
 
 })

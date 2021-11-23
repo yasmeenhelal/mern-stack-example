@@ -3,6 +3,29 @@ const recordRoutes = express.Router();
 const dbo = require("../db/conn");
 const ObjectId = require("mongodb").ObjectId;
 var record = require("../schema/flights");
+const router = express();
+
+
+//Test
+router.post('/createflight', (req, res)=>{
+  let flight1 ={
+      From:"LAX",
+      To:"JFK",
+      FlightDate:"12-1-2022",
+      Cabin:"Economy",
+      SeatsAvailable:"20"
+    }
+
+    record.create(flight1).then(function(userdata){
+      res.send(userdata)
+  })
+})
+
+router.get('/test', (req, res)=>{
+  res.send("test")
+})
+
+module.exports = router;
 
 // a list of all the available flights.
 recordRoutes.route("/records").get(function (req, res) {
