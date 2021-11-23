@@ -19,18 +19,22 @@ Password: {
 
 const usercons = new mongoose.model("users",userSchema);
 
-var u1 = [{
-Username:"Adminitrator",
-Password:"cfk89hJH221"
-}];
+// var u1 = [{
+// Username:"Adminitrator",
+// Password:"cfk89hJH221"
+// }];
 
-usercons.collection.insertMany(u1,function(err,docs){
-    if(err){
-        return console.error(err);
-    }
-    else{
-      console.log("User inserted")
-    }
-})
+// usercons.collection.insertMany(u1,function(err,docs){
+//     if(err){
+//         return console.error(err);
+//     }
+//     else{
+//       console.log("User inserted")
+//     }
+// })
+
+module.exports = usercons;
+;
+
 
 })

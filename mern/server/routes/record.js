@@ -2,6 +2,7 @@ const express = require("express");
 const recordRoutes = express.Router();
 const dbo = require("../db/conn");
 const ObjectId = require("mongodb").ObjectId;
+var record = require("../schema/flights");
 
 // a list of all the available flights.
 recordRoutes.route("/records").get(function (req, res) {
