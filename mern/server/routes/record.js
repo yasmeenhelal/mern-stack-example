@@ -1,33 +1,13 @@
 const express = require("express");
-
-// recordRoutes is an instance of the express router.
-// We use it to define our routes.
-// The router will be added as a middleware and will take control of requests starting with path /record.
 const recordRoutes = express.Router();
-
-// This will help us connect to the database
 const dbo = require("../db/conn");
-
-// This help convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
 
-//ADD RECORDS
-
-// var User = require('../schema/users.js');
-// db.collection('Users').insertOne({ Username:"Administrator", Password:"12345"});
-// const user1 = new User({ Username:"Administrator", Password:"12345"});
-// console.log(user1);
-// user1.save(function (err) {
-//   if (err) return console.error(err);
-  // console.log(user1.Username + " saved to bookstore collection.");
-// });
-
-
-// This section will help you get a list of all the records.
+// a list of all the available flights.
 recordRoutes.route("/records").get(function (req, res) {
   let db_connect = dbo.getDb("AirlineReservation");
   db_connect
-    .collection("records")
+    .collection("flights")
     .find({})
     .toArray(function (err, result) {
       if (err) throw err;
@@ -35,45 +15,70 @@ recordRoutes.route("/records").get(function (req, res) {
     });
 });
 
-// This section will help you get a single record by id
+//show a single record by id
 recordRoutes.route("/records/:id").get(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
   db_connect
-      .collection("records")
+      .collection("flights")
       .findOne(myquery, function (err, result) {
         if (err) throw err;
         res.json(result);
       });
 });
 
-// This section will help you create a new record.
+//a single record by ...
+recordRoutes.route("/records/:id").get(function (req, res) {
+  let db_connect = dbo.getDb();
+  let myquery = {};
+  db_connect
+      .collection("flights")
+      .find(myquery)
+      .toArray(function (err, result) {
+        if (err) throw err;
+        res.json(result);
+      });
+});
+
+//create a new record.
 recordRoutes.route("/records/add").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myobj = {
-    person_name: req.body.person_name,
-    person_position: req.body.person_position,
-    person_level: req.body.person_level,
+    flight_from: req.body.flight_from,
+    flight_to: req.body.flight_to,
+    flightNum: req.body.flightNum,
+    flight_date: req.body.flight_date,
+    cabin: req.body.cabin,
+    noSeats: req.body.noSeats,
+    depTime: req.body.depTime,
+    arrTime: req.body.arrTime,
+    terminal: req.body.terminal,
   };
-  db_connect.collection("records").insertOne(myobj, function (err, res) {
+  db_connect.collection("flights").insertOne(myobj, function (err, res) {
     if (err) throw err;
     response.json(res);
   });
 });
 
-// This section will help you update a record by id.
+//update a record by id.
 recordRoutes.route("/update/:id").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
   let newvalues = {
     $set: {
-      person_name: req.body.person_name,
-      person_position: req.body.person_position,
-      person_level: req.body.person_level,
+    flight_from: req.body.flight_from,
+    flight_to: req.body.flight_to,
+    flightNum: req.body.flightNum,
+    flight_date: req.body.flight_date,
+    cabin: req.body.cabin,
+    noSeats: req.body.noSeats,
+    depTime: req.body.depTime,
+    arrTime: req.body.arrTime,
+    terminal: req.body.terminal,
     },
   };
   db_connect
-    .collection("records")
+    .collection("flights")
     .updateOne(myquery, newvalues, function (err, res) {
       if (err) throw err;
       console.log("1 document updated");
@@ -81,11 +86,39 @@ recordRoutes.route("/update/:id").post(function (req, response) {
     });
 });
 
-// This section will help you delete a record
+
+//update a record by .
+recordRoutes.route("/update/:id").post(function (req, response) {
+  let db_connect = dbo.getDb();
+  let myquery = {};
+  let newvalues = {
+    $set: {
+    flight_from: req.body.flight_from,
+    flight_to: req.body.flight_to,
+    flightNum: req.body.flightNum,
+    flight_date: req.body.flight_date,
+    cabin: req.body.cabin,
+    noSeats: req.body.noSeats,
+    depTime: req.body.depTime,
+    arrTime: req.body.arrTime,
+    terminal: req.body.terminal,
+    },
+  };
+  db_connect
+    .collection("flights")
+    .updateMany(myquery, newvalues, function (err, res) {
+      if (err) throw err;
+      console.log(res.result.nModified + " document(s) updated");
+      response.json(res);
+    });
+});
+
+
+//delete a record
 recordRoutes.route("/:id").delete((req, response) => {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
-  db_connect.collection("records").deleteOne(myquery, function (err, obj) {
+  db_connect.collection("flights").deleteOne(myquery, function (err, obj) {
     if (err) throw err;
     console.log("1 document deleted");
     response.status(obj);

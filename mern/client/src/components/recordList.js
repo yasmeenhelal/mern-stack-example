@@ -3,11 +3,34 @@ import React, { Component } from "react";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
+// const MongoClient= require ('mongodb').MongoClient
+// const express =require('express');
+// const app= express();
+
+// var database
+// Run Server
+// app.listen(3000,()=>{
+// MongoClient.connect('mongodb+srv://Administrator:12345@cluster0.o88du.mongodb.net/AirlineReservation?retryWrites=true&w=majority',{
+//     useNewUrlParser: true},(error,result)=>{
+//         if (error) throw error
+//         database=result.db('Airline')
+//     }
+// )
+// console.log("Server is Listening")
+// })
+
+ 
 const Record = (props) => (
   <tr>
-    <td>{props.record.person_name}</td>
-    <td>{props.record.person_position}</td>
-    <td>{props.record.person_level}</td>
+    <td>{props.record.flight_from}</td>
+    <td>{props.record.flight_to}</td>
+    <td>{props.record.flightNum}</td>
+    <td>{props.record.flight_date}</td>
+    <td>{props.record.cabin}</td>
+    <td>{props.record.noSeats}</td>
+    <td>{props.record.depTime}</td>
+    <td>{props.record.arrTime}</td>
+    <td>{props.record.terminal}</td>
     <td>
       <Link to={"/edit/" + props.record._id}>Edit</Link> |
       <a
@@ -22,6 +45,8 @@ const Record = (props) => (
   </tr>
 );
 
+
+//CLASS RECORD LIST 
 export default class RecordList extends Component {
   // This is the constructor that shall store our data retrieved from the database
   constructor(props) {
@@ -33,18 +58,20 @@ export default class RecordList extends Component {
   // This method will get the data from the database.
   componentDidMount() {
     axios
-      .get("http://localhost:5000/record/")
+      .get("http://localhost:3000/record")
       .then((response) => {
         this.setState({ records: response.data });
       })
       .catch(function (error) {
         console.log(error);
       });
+
+      console.log("TEST");
   }
 
   // This method will delete a record based on the method
   deleteRecord(id) {
-    axios.delete("http://localhost:5000/" + id).then((response) => {
+    axios.delete("http://localhost:3000/" + id).then((response) => {
       console.log(response.data);
     });
 
@@ -58,9 +85,10 @@ export default class RecordList extends Component {
     return this.state.records.map((currentrecord) => {
       return (
         <Record
+          key={currentrecord._id}
           record={currentrecord}
           deleteRecord={this.deleteRecord}
-          key={currentrecord._id}
+          
         />
       );
     });
@@ -70,14 +98,21 @@ export default class RecordList extends Component {
   render() {
     return (
       <div>
-        <h3>Record List</h3>
+        <h3> </h3>
+        <h3> </h3>
+        <h3> Flight List</h3>
         <table className="table table-striped" style={{ marginTop: 20 }}>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Position</th>
-              <th>Level</th>
-              <th>Action</th>
+              <th>FROM</th>
+              <th>TO</th>
+              <th>FLIGHT NO.</th>
+              <th>DATE</th>
+              <th>CABIN</th>
+              <th>AVAILABLE SEATS</th>
+              <th>DEPARTURE TIME</th>
+              <th>ARRIVAL</th>
+              <th>TERMINAL</th>
             </tr>
           </thead>
           <tbody>{this.recordList()}</tbody>

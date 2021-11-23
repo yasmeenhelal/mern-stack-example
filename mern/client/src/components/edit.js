@@ -1,5 +1,5 @@
 import React,  {Component}  from "react";
-// This will require to npm install axios
+
 import axios from "axios";
 import { withRouter } from "react-router";
 
@@ -68,7 +68,7 @@ class Edit extends Component {
     // This will send a post request to update the data in the database.
     axios
       .post(
-        "http://localhost:5000/update/" + this.props.match.params.id,
+        "http://localhost:3000/update/" + this.props.match.params.id,
         newEditedperson
       )
       .then((res) => console.log(res.data));

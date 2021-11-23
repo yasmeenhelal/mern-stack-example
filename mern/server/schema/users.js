@@ -17,7 +17,7 @@ Password: {
 }
 })
 
-const usercons = new mongoose.model("Users",userSchema);
+const usercons = new mongoose.model("users",userSchema);
 
 var u1 = [{
 Username:"Adminitrator",
