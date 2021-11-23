@@ -1,6 +1,3 @@
-// import flightSchema from "./schema/flights";
-// import userSchema from "./schema/users";
-
 const { MongoClient } = require("mongodb");
 const Db = process.env.ATLAS_URI;
 const client = new MongoClient(Db, {
@@ -9,9 +6,6 @@ const client = new MongoClient(Db, {
 });
 
 var _db;
-
-// const flightSchema = require('./schema/flights');
-// const userSchema = require('./schema/users');
 
 module.exports = {
   connectToServer: function (callback) {

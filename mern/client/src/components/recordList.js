@@ -2,23 +2,6 @@ import React, { Component } from "react";
 // This will require to npm install axios
 import axios from 'axios';
 import { Link } from "react-router-dom";
-
-// const MongoClient= require ('mongodb').MongoClient
-// const express =require('express');
-// const app= express();
-
-// var database
-// Run Server
-// app.listen(3000,()=>{
-// MongoClient.connect('mongodb+srv://Administrator:12345@cluster0.o88du.mongodb.net/AirlineReservation?retryWrites=true&w=majority',{
-//     useNewUrlParser: true},(error,result)=>{
-//         if (error) throw error
-//         database=result.db('Airline')
-//     }
-// )
-// console.log("Server is Listening")
-// })
-
  
 const Record = (props) => (
   <tr>
@@ -65,8 +48,6 @@ export default class RecordList extends Component {
       .catch(function (error) {
         console.log(error);
       });
-
-      console.log("TEST");
   }
 
   // This method will delete a record based on the method

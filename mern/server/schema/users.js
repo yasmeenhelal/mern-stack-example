@@ -24,12 +24,12 @@ Username:"Adminitrator",
 Password:"cfk89hJH221"
 }];
 
-usercons.collection.insert(u1,function(err,docs){
+usercons.collection.insertMany(u1,function(err,docs){
     if(err){
         return console.error(err);
     }
     else{
-      console.log("Multiple documents inserted")
+      console.log("User inserted")
     }
 })
 

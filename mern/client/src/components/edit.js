@@ -23,7 +23,7 @@ class Edit extends Component {
   // This will get the record based on the id from the database.
   componentDidMount() {
     axios
-      .get("http://localhost:5000/record/" + this.props.match.params.id)
+      .get("http://localhost:3000/record/" + this.props.match.params.id)
       .then((response) => {
         this.setState({
           person_name: response.data.person_name,
