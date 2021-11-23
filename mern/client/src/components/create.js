@@ -1,15 +1,21 @@
 import React, { Component } from "react";
 // This will require to npm install axios
 import axios from 'axios';
+//import {useHistory} from 'react-router';
+
+
 
 // const express = require("express");
 // const app = express();
 
+
+
 export default class Create extends Component {
   // This is the constructor that stores the data.
+
+  
   constructor(props) {
     super(props);
-
     this.onChangeFlightFrom = this.onChangeFlightFrom.bind(this);
     this.onChangeFlightTo = this.onChangeFlightTo.bind(this);
     this.onChangeFlightNo = this.onChangeFlightNo.bind(this);
@@ -20,7 +26,7 @@ export default class Create extends Component {
     this.onChangeFlightArr = this.onChangeFlightArr.bind(this);
     this.onChangeFlightTer = this.onChangeFlightTer.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-
+   
     this.state = {
       flight_from: "",
       flight_to: "",

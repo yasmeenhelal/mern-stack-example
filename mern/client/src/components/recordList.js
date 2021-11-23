@@ -2,8 +2,8 @@ import React, { Component } from "react";
 // This will require to npm install axios
 import axios from 'axios';
 import { Link } from "react-router-dom";
- 
 const Record = (props) => (
+
   <tr>
     <td>{props.record.flight_from}</td>
     <td>{props.record.flight_to}</td>
